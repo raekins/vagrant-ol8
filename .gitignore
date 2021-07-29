@@ -1,0 +1,3 @@
+# Ignore vagrant's files
+.DS_Store
+/.vagrant
