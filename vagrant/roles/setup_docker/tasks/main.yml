@@ -1,0 +1,53 @@
+---
+- name: remove docker
+  dnf:
+    name: runc
+    state: absent
+
+- name: setup docker repo
+  command: dnf config-manager --add-repo=https://download.docker.com/linux/centos/docker-ce.repo
+
+- name: install docker
+  dnf:
+    name: docker-ce
+    state: present
+
+# Install kubectl
+- name: set up kubernets repo
+  lineinfile:
+    path: /etc/yum.repos.d/kubernetes.repo
+    state: present
+    create: yes
+    line: "{{ item }}"
+  with_items:
+    - '[kubernetes]'
+    - 'name=Kubernetes'
+    - 'baseurl=https://packages.cloud.google.com/yum/repos/kubernetes-el7-x86_64'
+    - 'enabled=1'
+    - 'gpgcheck=1'
+    - 'repo_gpgcheck=1'
+    - 'gpgkey=https://packages.cloud.google.com/yum/doc/yum-key.gpg https://packages.cloud.google.com/yum/doc/rpm-package-key.gpg'
+
+- name: install kubectl
+  dnf:
+    name: kubectl
+    state: present
+
+- name: add docker group to vagrant
+  command: usermod -a -G docker vagrant
+
+# add vagrant to docker group
+#- name: Add vagrant to docker group
+#  user:
+#    name: vagrant
+#    group: docker
+#    append: yes
+
+# Enable Docker
+- name: Enable Docker
+  shell: systemctl enable docker.service
+
+# Start Docker
+- name: Start Docker
+  shell: systemctl start docker.service
+

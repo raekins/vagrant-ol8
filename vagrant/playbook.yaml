@@ -1,0 +1,13 @@
+---
+
+# Setup Oracle Linux Server
+
+- hosts: localhost
+  gather_facts: true
+  become: true
+  become_method: sudo
+
+  roles:
+  - { role: setup_linux, tags: [ 'setup', 'linux'] }
+  - { role: setup_docker, tags: [ 'setup', 'docker'] }
+  - { role: setup_ansible, tags: [ 'setup', 'ansible'] }

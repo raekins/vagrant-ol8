@@ -1,0 +1,41 @@
+---
+
+# Install Linux packages
+- name: install Linux packages
+  dnf:
+    name: "{{ packages }}"
+  vars:
+    packages:
+    - dnf-utils
+    - net-tools
+
+- name: Install the 'Development tools' package group
+  dnf:
+    name: "@Development tools"
+    state: present
+
+# Upgrade packages
+- name: upgrade all packages
+  dnf:
+    name: "*"
+    state: latest
+
+
+# Update /etc/hosts
+- name: Update hostfile
+  lineinfile:
+    path: /etc/hosts
+    state: present
+    line: "{{ item }}"
+  with_items:
+    - '{{ ansible_eth0.ipv4.address }} {{ ansible_fqdn }} {{ ansible_hostname }}'
+
+
+# Disable Firewalld
+- name: Disable firewalld
+  shell: systemctl disable firewalld
+
+# Disable SELinux
+- name: Disable SELinux
+  selinux:
+    state: disabled
