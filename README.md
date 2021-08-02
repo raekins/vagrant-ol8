@@ -1,14 +1,15 @@
 # vagrant-ol8
 **Vagrant Oracle Linux 8 Virtual Machine** Vagrant build for Oracle Linux 8 with Docker Community Edition, Kubernetes and Ansible
-
+`
 Docker-ce: 20.10.7
 Ansible: 2.9.23
 Kubectl client version: v1.21.3
-
+`
 ## Test with
+`
 VirtualBox: 6.1.16r140961
 Vagrant.  : 2.2.17
-
+`
 ### Check VirtualBox version using:
 `
 % vboxmanage --version'
