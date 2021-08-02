@@ -1,5 +1,5 @@
 # vagrant-ol8
-**Vagrant Oracle Linux 8 Virtual Machine** 
+**Vagrant Oracle Linux 8 Virtual Machine**. 
 Vagrant build for Oracle Linux 8 with Docker Community Edition, Kubernetes and Ansible. 
 
 Docker-ce: 20.10.7 <br />
