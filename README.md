@@ -22,11 +22,9 @@ $ vagrant version
 
 ## Authors
 
-Ron Ekins, Principal Solutions Architect, Office of the CTO at Pure Storage
-
-Oracle ACE Director
-
-@ronekins
+Ron Ekins, Principal Solutions Architect, Office of the CTO at Pure Storage <br />
+Oracle ACE Director <br />
+@ronekins <br />
 
 ## License
 
